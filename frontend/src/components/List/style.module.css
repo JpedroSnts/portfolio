@@ -1,0 +1,18 @@
+.Content {
+	width: 100%;
+}
+
+.List {
+	width: auto;
+	row-gap: 20px;
+	column-gap: 10px;
+	display: flex;
+	margin-bottom: 25px;
+	justify-content: space-between;
+}
+
+.Pagination {
+	display: flex;
+	gap: 10px;
+	justify-content: space-between;
+}

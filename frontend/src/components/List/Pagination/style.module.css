@@ -1,0 +1,60 @@
+.ChevronRight {
+	box-sizing: border-box;
+	position: relative;
+	display: block;
+	width: 22px;
+	height: 22px;
+	border: 2px solid transparent;
+	border-radius: 100px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+.ChevronRight::after {
+	content: "";
+	display: block;
+	box-sizing: border-box;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-bottom: 2px solid;
+	border-right: 2px solid;
+	transform: rotate(-45deg);
+	right: 6px;
+	top: 4px;
+}
+
+.ChevronLeft {
+	box-sizing: border-box;
+	position: relative;
+	display: block;
+	width: 22px;
+	height: 22px;
+	border: 2px solid transparent;
+	border-radius: 100px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+.ChevronLeft::after {
+	content: "";
+	display: block;
+	box-sizing: border-box;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-bottom: 2px solid;
+	border-left: 2px solid;
+	transform: rotate(45deg);
+	left: 6px;
+	top: 4px;
+}
+
+.ChevronLeft:hover,
+.ChevronRight:hover {
+	color: #3e67e0;
+}
+
+.Pagination {
+	display: flex;
+	align-items: center;
+	column-gap: 5px;
+}

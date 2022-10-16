@@ -1,0 +1,52 @@
+.Content {
+	height: 75vh;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.About {
+	display: flex;
+	justify-content: space-between;
+}
+
+.Photo {
+	width: 30vw;
+	height: 30vw;
+	border-radius: 10px;
+	margin-right: 20px;
+}
+
+.Text p {
+	text-align: justify;
+}
+
+@media screen and (min-width: 1280px) {
+	.Photo {
+		width: 380px;
+		height: 380px;
+	}
+}
+
+@media screen and (max-width: 730px) {
+	.Photo {
+		width: 80vw;
+		height: 80vw;
+		margin-right: 0;
+		margin-bottom: 20px;
+		margin-top: 30px;
+	}
+
+	.Text {
+		width: 80vw;
+	}
+
+	.About {
+		flex-direction: column;
+	}
+
+	.Content {
+		height: auto;
+	}
+}

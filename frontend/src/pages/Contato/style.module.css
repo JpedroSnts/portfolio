@@ -1,0 +1,91 @@
+.Content {
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 75vh;
+}
+
+.Buttons {
+	width: 50%;
+	height: 210px;
+	padding-right: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.Form {
+	width: 50%;
+	height: 210px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.Form input {
+	width: 49%;
+}
+
+.Form textarea {
+	width: 100%;
+}
+
+.TopForm {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.Message {
+	width: 100%;
+}
+
+@media screen and (max-width: 720px) {
+	.Content {
+		flex-direction: column;
+	}
+
+	.Buttons {
+		width: 100%;
+		padding: 0;
+		padding-bottom: 15px;
+	}
+
+	.Form {
+		width: 100%;
+	}
+
+	.TopForm {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.TopForm input {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.Message {
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-height: 560px) {
+	.Content {
+		height: auto;
+		padding-bottom: 20px;
+	}
+
+	.Buttons {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(49%, 1fr));
+		gap: 10px;
+		height: auto;
+	}
+
+	.Form {
+		height: auto;
+	}
+}

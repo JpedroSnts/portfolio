@@ -1,0 +1,27 @@
+.IconButton {
+	border: solid 1px transparent;
+	border-radius: 5px;
+	display: flex;
+	padding: 6px 12px;
+	align-items: center;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	text-decoration: none;
+	color: #fff;
+	font-size: 16px;
+}
+
+.IconButton img {
+	height: 30px;
+	margin-right: 20px;
+}
+
+.IconButton span {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.IconButton:hover {
+	border: solid 1px #3e67e0;
+}

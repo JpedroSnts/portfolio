@@ -1,0 +1,126 @@
+.InsibleDivForNav {
+	height: 70px;
+}
+
+.NavBar {
+	width: 900px;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 40px 0 20px 0;
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(22, 27, 31, 1);
+}
+
+.HorizontalMenu {
+	display: flex;
+	list-style: none;
+}
+
+.NavBar li {
+	display: flex;
+	list-style: none;
+	margin-left: 30px;
+}
+
+.NavBar .Logo {
+	color: #fff;
+	font-size: 25px;
+	font-weight: 700;
+	text-decoration: none;
+	transition: all 0.2s ease-in-out;
+}
+
+.NavBar li a {
+	color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: all 0.2s ease-in-out;
+}
+
+.NavBar .ActiveLink {
+	color: #3e67e0;
+}
+
+.NavBar li a:hover,
+.NavBar .Logo:hover {
+	color: #3e67e0;
+}
+
+.VerticalMenu {
+	display: none;
+}
+
+.VerticalMenu {
+	display: none;
+}
+
+.VerticalMenu button {
+	position: relative;
+	z-index: 2;
+}
+
+.VerticalMenu ul {
+	z-index: 1;
+	width: 40vw;
+	height: 100vh;
+	background-color: rgba(18, 23, 27, 0.969);
+	position: fixed;
+	right: 0;
+	top: 0;
+	padding-top: 80px;
+	transform: translateX(40vw);
+	transition: all 0.25s ease-in-out;
+}
+
+.VerticalMenu ul li {
+	margin-left: 0;
+	margin-bottom: 10px;
+}
+
+.VerticalMenu ul li a {
+	padding: 5px 20px;
+	width: 100%;
+	text-align: right;
+}
+
+.VerticalMenu ul li a:hover {
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+.AreaToClose {
+	width: 100vh;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+}
+
+@media screen and (max-width: 950px) {
+	.NavBar {
+		padding: 40px 20px 20px 20px;
+		width: 100%;
+		background-color: rgba(22, 27, 31, 1);
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.VerticalMenu {
+		display: block;
+	}
+
+	.HorizontalMenu {
+		display: none;
+	}
+
+	.NavBar {
+		padding: 10px 20px;
+		width: 100%;
+		background-color: rgba(22, 27, 31, 1);
+	}
+}

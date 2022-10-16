@@ -1,0 +1,21 @@
+import ICertificado from "../../types/entities/ICertificado";
+import ITechnology from "../../types/entities/ITechnology";
+import { api } from "../api";
+
+async function getTechnologies(): Promise<ITechnology[]> {
+	return (await api().get("/mock/tecnologias")).data;
+}
+
+async function getTechnology(id: string | number): Promise<ITechnology | undefined> {
+	return (await getTechnologies()).find(t => t.id === id);
+}
+
+async function getCertificados(): Promise<ICertificado[]> {
+	return (await api().get("/mock/certificados")).data;
+}
+
+async function getCertificadosByTechnology(id: string | undefined): Promise<ICertificado[]> {
+	return (await getCertificados()).filter(({ technology }) => id === technology.id);
+}
+
+export { getTechnologies, getCertificados, getTechnology, getCertificadosByTechnology };

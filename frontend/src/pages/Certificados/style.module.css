@@ -1,0 +1,27 @@
+.Content {
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 40px;
+	flex-direction: column;
+	padding-bottom: 20px;
+}
+
+.Select {
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.Certificados {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 10px;
+}
+
+@media screen and (max-width: 720px) {
+	.Content {
+		margin-top: 10px;
+	}
+}

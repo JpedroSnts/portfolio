@@ -1,0 +1,20 @@
+.Select {
+	border: 1px solid transparent;
+	border-radius: 5px;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 10px;
+	font-size: 16px;
+	color: #f5f5f5;
+	transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	outline: none;
+}
+
+.Select option {
+	background-color: #273036;
+}
+
+.Select:focus,
+.Select:valid {
+	outline: none;
+	border: 1px solid #3e67e0;
+}
