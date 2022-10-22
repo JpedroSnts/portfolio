@@ -1,4 +1,4 @@
-package dev.jpedrosnts.portifolio.model.entity;
+package dev.jpedrosnts.portifolio.model;
 
 import java.util.UUID;
 

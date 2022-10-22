@@ -1,6 +1,5 @@
-package dev.jpedrosnts.portifolio.model.entity;
+package dev.jpedrosnts.portifolio.model;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -20,17 +19,16 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_contato")
-public class Contato {
+@Table(name = "tb_usuario")
+public class Usuario {
+
     @Id
-    @Column(name = "cd_contato")
     private UUID id;
-    @Column(name = "nm_pessoa")
+    @Column(name = "nm_usuario")
     private String nome;
-    @Column(name = "nm_email_pessoa")
+    @Column(name = "nm_email")
     private String email;
-    @Column(name = "nm_mensagem_pessoa")
-    private String mensagem;
-    @Column(name = "dt_envio")
-    private LocalDateTime data = LocalDateTime.now();
+    @Column(name = "nm_senha")
+    private String senha;
+
 }

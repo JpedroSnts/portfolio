@@ -1,4 +1,6 @@
-package dev.jpedrosnts.portifolio.model.entity;
+package dev.jpedrosnts.portifolio.model;
+
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,15 +19,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_tecnologia")
-public class Tecnologia {
+@Table(name = "tb_tipo_projeto")
+public class TipoProjeto {
 
     @Id
-    @Column(name = "sg_tecnologia")
-    private String id;
-    @Column(name = "nm_tecnologia")
+    @Column(name = "cd_tipo_projeto")
+    private UUID id;
+    @Column(name = "nm_tipo_projeto")
     private String nome;
-    @Column(name = "nm_icone")
-    private String icone;
 
 }
