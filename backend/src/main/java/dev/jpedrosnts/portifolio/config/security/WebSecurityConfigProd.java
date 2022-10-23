@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -23,17 +24,18 @@ public class WebSecurityConfigProd extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/mock/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/contato").permitAll()
+                .antMatchers(HttpMethod.GET, "/admin/nova-senha").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().and()
-                // .formLogin(form -> form
-                // .loginPage("/login")
-                // .defaultSuccessUrl("/usuario/pedido", true)
-                // .permitAll())
-                // .logout(logout -> {
-                // logout.logoutUrl("/logout").logoutSuccessUrl("/home");
-                // })
+                 .formLogin(form -> form
+                 .loginPage("/admin/login")
+                 .defaultSuccessUrl("/home", true)
+                 .permitAll())
+                 .logout(logout -> {
+                 logout.logoutUrl("/admin/logout").logoutSuccessUrl("/admin/login");
+                 })
                 .csrf().disable();
     }
 
