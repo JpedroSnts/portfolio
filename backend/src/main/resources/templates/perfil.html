@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:replace="partials/head :: head('Perfil')"></head>
+<body>
+<header>
+    <nav th:replace="partials/navbar :: navbar"></nav>
+</header>
+<main class="container mt-4">
+    <h1>Atualizar perfil</h1>
+    <hr>
+    <div th:if="${loginError}" class="alert alert-danger">
+        Usuário ou senha incorretos!
+    </div>
+    <form th:action="@{/admin/perfil}" th:object="${atualizarPerfilForm}" method="post">
+        <div class="form-floating mb-2">
+            <input type="email" class="form-control text-black-50" id="email"
+                   name="email"
+                   placeholder="email@email.com"
+                   th:value="${email}"
+                   disabled>
+            <label for="email">E-mail</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
+                   th:field="*{nome}"
+                   th:errorclass="is-invalid">
+            <label for="nome">Nome</label>
+            <div th:errors="*{nome}" class="invalid-feedback"></div>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha"
+                   th:field="*{senha}"
+                   th:errorclass="is-invalid">
+            <label for="senha">Senha</label>
+            <div th:errors="*{senha}" class="invalid-feedback"></div>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="password" class="form-control" id="novaSenha" name="novaSenha" placeholder="Nova Senha">
+            <label for="novaSenha">Nova Senha</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Atualizar</button>
+    </form>
+</main>
+</body>
+</html>

@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>Login page</title>
-  </head>
-  <body>
-    <h1>Login page</h1>
-    <p th:if="${loginError}" class="error">Wrong user or password</p>
+<html lang="pt-br">
+<head th:replace="partials/head :: head('Login')"></head>
+<body>
+<main class="container mt-4">
+    <h1>Login</h1>
+    <hr>
+    <div th:if="${loginError}" class="alert alert-danger">
+        Usuário ou senha incorretos!
+    </div>
     <form th:action="@{/admin/login}" method="post">
-      <label for="username">Username</label>:
-      <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
-      <label for="password">Password</label>:
-      <input type="password" id="password" name="password" /> <br />
-      <input type="submit" value="Log in" />
-      <a th:href="@{/admin/nova-senha}">Esqueci minha senha</a>
+        <div class="form-floating mb-2">
+            <input type="email" class="form-control" id="username" name="username" placeholder="name@example.com">
+            <label for="username">E-mail</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            <label for="password">Senha</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Entrar</button>
     </form>
-  </body>
+    <div class="text-center mt-2">
+        <a th:href="@{/admin/nova-senha}">Esqueci minha senha</a>
+    </div>
+</main>
+</body>
 </html>
