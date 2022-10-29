@@ -1,19 +1,9 @@
 package dev.jpedrosnts.portifolio.model;
 
+import lombok.*;
+
+import javax.persistence.*;
 import java.util.UUID;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
@@ -25,6 +15,7 @@ import lombok.ToString;
 public class Certificado {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cd_certificado")
     private UUID id;
     @Column(name = "nm_certificado")

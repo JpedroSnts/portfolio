@@ -1,23 +1,11 @@
 package dev.jpedrosnts.portifolio.model;
 
+import lombok.*;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
@@ -29,6 +17,7 @@ import lombok.ToString;
 public class Projeto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cd_projeto")
     private UUID id;
     @Column(name = "nm_projeto")
