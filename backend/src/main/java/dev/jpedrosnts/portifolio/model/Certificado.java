@@ -1,6 +1,8 @@
 package dev.jpedrosnts.portifolio.model;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -15,8 +17,10 @@ import java.util.UUID;
 public class Certificado {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "cd_certificado")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "VARCHAR(36)", name = "cd_certificado")
+    @Type(type = "uuid-char")
     private UUID id;
     @Column(name = "nm_certificado")
     private String nome;

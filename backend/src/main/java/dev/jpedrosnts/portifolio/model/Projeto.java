@@ -1,6 +1,8 @@
 package dev.jpedrosnts.portifolio.model;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,8 +19,10 @@ import java.util.UUID;
 public class Projeto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "cd_projeto")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "VARCHAR(36)", name = "cd_projeto")
+    @Type(type = "uuid-char")
     private UUID id;
     @Column(name = "nm_projeto")
     private String nome;

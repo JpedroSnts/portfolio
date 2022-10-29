@@ -15,6 +15,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Getter
 @Setter
@@ -25,8 +27,10 @@ import lombok.ToString;
 @Table(name = "tb_contato")
 public class Contato {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "cd_contato")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "VARCHAR(36)", name = "cd_contato")
+    @Type(type = "uuid-char")
     private UUID id;
     @Column(name = "nm_pessoa")
     private String nome;
