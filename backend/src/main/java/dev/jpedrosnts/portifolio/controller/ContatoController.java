@@ -2,7 +2,7 @@ package dev.jpedrosnts.portifolio.controller;
 
 import dev.jpedrosnts.portifolio.dto.EmailForm;
 import dev.jpedrosnts.portifolio.model.Contato;
-import dev.jpedrosnts.portifolio.service.ContatoService;
+import dev.jpedrosnts.portifolio.repository.ContatoRepository;
 import dev.jpedrosnts.portifolio.util.EnviarEmailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,12 +18,12 @@ import javax.validation.Valid;
 @RequestMapping("/contato")
 public class ContatoController {
 
-    private final ContatoService service;
+    private final ContatoRepository service;
     private final EnviarEmailUtil emailUtil;
     private final String emailAdmin;
 
     @Autowired
-    public ContatoController(ContatoService service, EnviarEmailUtil emailUtil, @Value("${email.admin}") String emailAdmin) {
+    public ContatoController(ContatoRepository service, EnviarEmailUtil emailUtil, @Value("${email.admin}") String emailAdmin) {
         this.service = service;
         this.emailUtil = emailUtil;
         this.emailAdmin = emailAdmin;
@@ -35,10 +35,10 @@ public class ContatoController {
         contato.setEmail(form.getEmail());
         contato.setNome(form.getNome());
         contato.setMensagem(form.getMensagem());
-        contato = service.salvar(contato);
+        contato = service.save(contato);
         String assunto = "Portifólio - " + contato.getNome();
         String msg = "De: " + contato.getNome() + "\nEmail: " + contato.getEmail() + "\n\n" + contato.getMensagem();
-        emailUtil.enviar(assunto, msg.toString(), new String[] {emailAdmin});
+        emailUtil.enviar(assunto, msg.toString(), new String[]{emailAdmin});
         return ResponseEntity.status(201).body(contato);
     }
 }
