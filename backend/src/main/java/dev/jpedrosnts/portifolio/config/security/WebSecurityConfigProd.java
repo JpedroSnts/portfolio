@@ -1,7 +1,5 @@
 package dev.jpedrosnts.portifolio.config.security;
 
-import javax.sql.DataSource;
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
@@ -9,6 +7,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import javax.sql.DataSource;
 
 @Configuration
 @Profile("prod")
@@ -26,17 +26,16 @@ public class WebSecurityConfigProd extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/contato").permitAll()
                 .antMatchers(HttpMethod.GET, "/admin/nova-senha").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().and()
-                 .formLogin(form -> form
-                 .loginPage("/admin/login")
-                 .failureUrl("/admin/login-error")
-                 .defaultSuccessUrl("/home", true)
-                 .permitAll())
-                 .logout(logout -> {
-                 logout.logoutUrl("/admin/logout").logoutSuccessUrl("/admin/login");
-                 })
+                .formLogin(form -> form
+                        .loginPage("/admin/login")
+                        .failureUrl("/admin/login-error")
+                        .defaultSuccessUrl("/home", true)
+                        .permitAll())
+                .logout(logout -> logout.logoutUrl("/admin/logout").logoutSuccessUrl("/admin/login"))
                 .csrf().disable();
     }
 
