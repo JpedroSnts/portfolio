@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:replace="partials/head :: head('Cadastrar Projeto')"></head>
+<body>
+<header>
+    <nav th:replace="partials/navbar :: navbar"></nav>
+</header>
+<main class="container mt-4">
+
+    <h1><a th:href="@{/projeto}" class="text-dark"><span class="bi bi-arrow-left"></span></a> Atualizar Projeto</h1>
+    <hr/>
+    <form th:action="@{/projeto/editar/} + ${id}" method="post" th:object="${atualizarProjetoForm}"
+          enctype="multipart/form-data">
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
+                   th:field="*{nome}"
+                   th:errorclass="is-invalid">
+            <label for="nome">Nome</label>
+            <div th:errors="*{nome}" class="invalid-feedback"></div>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="url" class="form-control" id="link" name="link" placeholder="Link"
+                   th:field="*{link}"
+                   th:errorclass="is-invalid">
+            <label for="link">Link</label>
+            <div th:errors="*{link}" class="invalid-feedback"></div>
+        </div>
+        <div class="form-floating mb-2">
+            <select class="form-select" id="tipoProjeto" aria-label="Tipo de Projeto"
+                    th:field="*{tipoProjeto}"
+                    th:errorclass="is-invalid">
+                <option selected value="">Tipo de Projeto</option>
+                <option th:each="tp: ${tiposProjetos}" th:value="${tp.id}" th:text="${tp.nome}"></option>
+            </select>
+            <label for="tipoProjeto">Tipo de Projeto</label>
+            <div th:errors="*{tipoProjeto}" class="invalid-feedback"></div>
+        </div>
+        <div class="form-floating mb-2">
+            <textarea name="descricao" id="descricao" class="form-control" placeholder="Descrição"
+                      style="height: 100px"
+                      th:field="*{descricao}"
+                      th:errorclass="is-invalid"></textarea>
+            <label for="descricao">Descrição</label>
+            <div th:errors="*{descricao}" class="invalid-feedback"></div>
+        </div>
+        <div class="input-group mb-2">
+            <input type="file" class="form-control" id="imagem" name="imagem" aria-describedby="image"
+                   aria-label="Upload" placeholder="Imagem"
+                   th:field="*{imagem}"
+                   th:errorclass="is-invalid">
+            <div th:errors="*{imagem}" class="invalid-feedback"></div>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Atualizar</button>
+    </form>
+
+</main>
+</body>
+</html>
