@@ -36,6 +36,7 @@ public class FileUploadUtil {
         BlobClient blob = container.getBlobClient(fileName);
         BlobHttpHeaders headers = new BlobHttpHeaders();
         headers.setContentType(getContentType(fileName));
+        blob.deleteIfExists();
         blob.upload(BinaryData.fromBytes(image));
         blob.setHttpHeaders(headers);
         return blob.getBlobUrl();
