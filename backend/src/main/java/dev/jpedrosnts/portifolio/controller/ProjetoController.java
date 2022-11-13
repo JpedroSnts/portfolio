@@ -118,6 +118,7 @@ public class ProjetoController {
         model.addAttribute("tiposProjetos", tipoProjetoRepository.findAll());
         model.addAttribute("id", id);
         Projeto projeto = projetoRepository.findById(id).orElseThrow();
+        model.addAttribute("imagemLink", projeto.getImagem());
         form.setTipoProjeto(projeto.getTipoProjeto().getId().toString());
         form.setNome(projeto.getNome());
         form.setLink(projeto.getLink());

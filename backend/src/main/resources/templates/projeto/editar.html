@@ -50,6 +50,7 @@
                    th:errorclass="is-invalid">
             <div th:errors="*{imagem}" class="invalid-feedback"></div>
         </div>
+        <a th:href="${imagemLink}" target="_blank">Abrir Imagem</a>
         <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Atualizar</button>
     </form>
 
