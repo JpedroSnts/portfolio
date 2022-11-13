@@ -1,11 +1,11 @@
 package dev.jpedrosnts.portifolio.model;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -17,8 +17,11 @@ import javax.persistence.Table;
 public class Tecnologia {
 
     @Id
-    @Column(name = "sg_tecnologia")
-    private String id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "VARCHAR(36)", name = "cd_tecnologia")
+    @Type(type = "uuid-char")
+    private UUID id;
     @Column(name = "nm_tecnologia")
     private String nome;
     @Column(name = "nm_icone")

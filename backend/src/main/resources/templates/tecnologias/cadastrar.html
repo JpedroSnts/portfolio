@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:replace="partials/head :: head('Cadastrar Tecnologia')"></head>
+<body>
+<header>
+    <nav th:replace="partials/navbar :: navbar"></nav>
+</header>
+<main class="container mt-4">
+
+    <h1><a th:href="@{/tecnologia}" class="text-dark"><span class="bi bi-arrow-left"></span></a> Cadastrar Tecnologia
+    </h1>
+    <hr/>
+    <form th:action="@{/tecnologia/cadastrar}" method="post" th:object="${cadastrarTecnologiaForm}"
+          enctype="multipart/form-data">
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
+                   th:field="*{nome}"
+                   th:errorclass="is-invalid">
+            <label for="nome">Nome</label>
+            <div th:errors="*{nome}" class="invalid-feedback"></div>
+        </div>
+        <div class="input-group mb-2">
+            <input type="file" class="form-control" id="icone" name="icone" aria-describedby="image"
+                   aria-label="Upload" placeholder="Icone"
+                   th:field="*{icone}"
+                   th:errorclass="is-invalid">
+            <div th:errors="*{icone}" class="invalid-feedback"></div>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Cadastrar</button>
+    </form>
+
+</main>
+</body>
+</html>
