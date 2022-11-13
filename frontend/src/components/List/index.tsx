@@ -34,7 +34,7 @@ function List ({ projects }: { projects: IProject[] }) {
     useEffect(() => {
         setTotalPages(calculatePages(size.width, projects.length));
         setPage(1);
-    }, [size]);
+    }, [size, projects]);
 
     useEffect(() => {
         if (projects.length === 0) return;
