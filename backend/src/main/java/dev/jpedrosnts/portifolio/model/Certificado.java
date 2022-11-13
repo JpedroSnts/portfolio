@@ -24,8 +24,6 @@ public class Certificado {
     private UUID id;
     @Column(name = "nm_certificado")
     private String nome;
-    @Column(name = "ds_certificado", columnDefinition = "TEXT")
-    private String descricao;
     @Column(name = "nm_imagem")
     private String imagem;
 
