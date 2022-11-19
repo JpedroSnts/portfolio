@@ -42,6 +42,15 @@ public class FileUploadUtil {
         return blob.getBlobUrl();
     }
 
+    public boolean delete(String fileName) {
+        BlobContainerClient container = new BlobContainerClientBuilder()
+                .containerName(containerName)
+                .connectionString(connectionString)
+                .buildClient();
+        BlobClient blob = container.getBlobClient(fileName);
+        return blob.deleteIfExists();
+    }
+
     private static String getContentType(String fileName) {
         return URLConnection.getFileNameMap().getContentTypeFor(fileName);
     }
