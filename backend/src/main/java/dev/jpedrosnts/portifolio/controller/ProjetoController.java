@@ -110,7 +110,10 @@ public class ProjetoController {
 
     @PostMapping("/excluir/{id}")
     private String excluir(@PathVariable UUID id) {
-        projetoRepository.deleteById(id);
+        Projeto projeto = projetoRepository.getById(id);
+        String[] arr = projeto.getImagem().split("/");
+        fileUploadUtil.delete(arr[arr.length - 1]);
+        projetoRepository.delete(projeto);
         return "redirect:/projeto";
     }
 
