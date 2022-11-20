@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:replace="partials/head :: head('Editar Certificado')"></head>
+<body>
+<header>
+    <nav th:replace="partials/navbar :: navbar"></nav>
+</header>
+<main class="container mt-4">
+
+    <h1><a th:href="@{/certificado}" class="text-dark"><span class="bi bi-arrow-left"></span></a> Editar Certificado
+    </h1>
+    <hr/>
+    <form th:action="@{/certificado/editar/} + ${id}" method="post" th:object="${cadastrarCertificadoForm}"
+          enctype="multipart/form-data">
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
+                   th:field="*{nome}"
+                   th:errorclass="is-invalid">
+            <label for="nome">Nome</label>
+            <div th:errors="*{nome}" class="invalid-feedback"></div>
+        </div>
+        <div class="form-floating mb-2">
+            <select class="form-select" id="tecnologia" aria-label="Tecnologia"
+                    th:field="*{tecnologia}"
+                    th:errorclass="is-invalid">
+                <option selected value="">Selecionar Tecnologia</option>
+                <option th:each="tec: ${tecnologias}" th:value="${tec.id}" th:text="${tec.nome}"></option>
+            </select>
+            <label for="tecnologia">Tecnologia</label>
+            <div th:errors="*{tecnologia}" class="invalid-feedback"></div>
+        </div>
+        <div class="form-floating mb-2" id="divCertificadoLink">
+            <input type="text" class="form-control" id="certificadoLink" name="certificadoLink" placeholder="Nome"
+                   th:field="*{certificadoLink}"
+                   th:errorclass="is-invalid">
+            <label for="certificadoLink">Link Certificado</label>
+            <div th:errors="*{certificadoLink}" class="invalid-feedback"></div>
+        </div>
+        <div class="input-group mb-2" id="divCertificadoFile">
+            <input type="file" class="form-control" id="certificado" name="certificado" aria-describedby="image"
+                   aria-label="Upload" placeholder="Certificado"
+                   th:field="*{certificado}"
+                   th:errorclass="is-invalid">
+            <div th:errors="*{certificado}" class="invalid-feedback"></div>
+        </div>
+        <div>
+            <strong>Mudar Para: </strong>
+            <span id="toggleCertificado" class="link-primary text-decoration-underline"
+                  style="cursor: pointer">Link</span>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Editar</button>
+    </form>
+
+</main>
+<script>
+    let toggleCertificado = true;
+    const $toggleCertificado = document.querySelector("#toggleCertificado");
+    const $certificadoLink = document.querySelector("#divCertificadoLink");
+    const $certificadoFile = document.querySelector("#divCertificadoFile");
+    const $inputCertificadoLink = document.querySelector("#certificadoLink");
+
+    function toggle() {
+        $toggleCertificado.classList.add("link-primary", "text-decoration-underline");
+        $toggleCertificado.classList.remove("text-muted");
+        $toggleCertificado.style.cursor = "pointer";
+        if ($inputCertificadoLink.value !== "") {
+            $toggleCertificado.textContent = "Arquivo";
+            $certificadoLink.style.display = "flex";
+            $certificadoFile.style.display = "none";
+            $toggleCertificado.classList.remove("link-primary", "text-decoration-underline");
+            $toggleCertificado.classList.add("text-muted");
+            $toggleCertificado.style.cursor = "default";
+            return;
+        }
+        if (toggleCertificado) {
+            $toggleCertificado.textContent = "Link";
+            $certificadoLink.style.display = "none";
+            $certificadoFile.style.display = "flex";
+            return;
+        }
+        $toggleCertificado.textContent = "Arquivo";
+        $certificadoLink.style.display = "flex";
+        $certificadoFile.style.display = "none";
+    }
+
+    $inputCertificadoLink.addEventListener("keypress", () => {
+        toggle();
+    });
+    $inputCertificadoLink.addEventListener("change", () => {
+        toggle();
+    });
+    $toggleCertificado.addEventListener("click", () => {
+        toggleCertificado = !toggleCertificado;
+        toggle();
+    });
+
+    toggle();
+</script>
+</body>
+</html>
