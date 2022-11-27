@@ -31,6 +31,19 @@ public class TemplateApiController {
         return ResponseEntity.ok().body(ContatoTemplateDto.toDto(contatoTemplateRepository.findAll()));
     }
 
+    @GetMapping(value = "/home", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<SobreMimTemplateDto> listarHome() {
+        SobreMimTemplate sobreMim = null;
+        List<SobreMimTemplate> all = sobreMimTemplateRepository.findAll();
+        if (all.size() > 0) {
+            sobreMim = all.get(0);
+            String[] nome = sobreMim.getNome().split(" ");
+            sobreMim.setNome(nome[0]);
+            sobreMim.setSobrenome(nome[1]);
+        }
+        return ResponseEntity.ok().body(new SobreMimTemplateDto(sobreMim));
+    }
+
     @GetMapping(value = "/sobre-mim", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SobreMimTemplateDto> listarSobreMim() {
         SobreMimTemplate sobreMim = null;
