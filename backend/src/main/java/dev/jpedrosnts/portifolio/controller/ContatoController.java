@@ -1,6 +1,6 @@
 package dev.jpedrosnts.portifolio.controller;
 
-import dev.jpedrosnts.portifolio.dto.EmailForm;
+import dev.jpedrosnts.portifolio.dto.form.EmailForm;
 import dev.jpedrosnts.portifolio.model.Contato;
 import dev.jpedrosnts.portifolio.repository.ContatoRepository;
 import dev.jpedrosnts.portifolio.util.EnviarEmailUtil;

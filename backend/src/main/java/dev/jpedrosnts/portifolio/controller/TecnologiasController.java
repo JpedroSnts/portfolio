@@ -1,7 +1,7 @@
 package dev.jpedrosnts.portifolio.controller;
 
-import dev.jpedrosnts.portifolio.dto.AtualizarTecnologiaForm;
-import dev.jpedrosnts.portifolio.dto.CadastrarTecnologiaForm;
+import dev.jpedrosnts.portifolio.dto.form.AtualizarTecnologiaForm;
+import dev.jpedrosnts.portifolio.dto.form.CadastrarTecnologiaForm;
 import dev.jpedrosnts.portifolio.model.Tecnologia;
 import dev.jpedrosnts.portifolio.repository.TecnologiaRepository;
 import dev.jpedrosnts.portifolio.util.FileUploadUtil;

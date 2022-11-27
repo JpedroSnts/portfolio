@@ -1,7 +1,7 @@
 package dev.jpedrosnts.portifolio.controller;
 
-import dev.jpedrosnts.portifolio.dto.AtualizarProjetoForm;
-import dev.jpedrosnts.portifolio.dto.CadastrarProjetoForm;
+import dev.jpedrosnts.portifolio.dto.form.AtualizarProjetoForm;
+import dev.jpedrosnts.portifolio.dto.form.CadastrarProjetoForm;
 import dev.jpedrosnts.portifolio.model.Projeto;
 import dev.jpedrosnts.portifolio.model.TipoProjeto;
 import dev.jpedrosnts.portifolio.repository.ProjetoRepository;

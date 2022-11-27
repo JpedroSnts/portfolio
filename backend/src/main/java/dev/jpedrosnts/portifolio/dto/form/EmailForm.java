@@ -1,11 +1,11 @@
-package dev.jpedrosnts.portifolio.dto;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+package dev.jpedrosnts.portifolio.dto.form;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter

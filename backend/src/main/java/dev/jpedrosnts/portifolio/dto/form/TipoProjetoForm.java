@@ -1,4 +1,4 @@
-package dev.jpedrosnts.portifolio.dto;
+package dev.jpedrosnts.portifolio.dto.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

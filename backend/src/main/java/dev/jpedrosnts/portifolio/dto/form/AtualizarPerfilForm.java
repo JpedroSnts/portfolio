@@ -1,4 +1,4 @@
-package dev.jpedrosnts.portifolio.dto;
+package dev.jpedrosnts.portifolio.dto.form;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 public class AtualizarPerfilForm {
-    
+
     @NotBlank(message = "Nome não pode estar vazio")
     private String nome;
     @NotBlank(message = "Senha não pode estar vazia")

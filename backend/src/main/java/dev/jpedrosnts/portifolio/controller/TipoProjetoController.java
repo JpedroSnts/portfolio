@@ -1,6 +1,6 @@
 package dev.jpedrosnts.portifolio.controller;
 
-import dev.jpedrosnts.portifolio.dto.TipoProjetoForm;
+import dev.jpedrosnts.portifolio.dto.form.TipoProjetoForm;
 import dev.jpedrosnts.portifolio.model.Projeto;
 import dev.jpedrosnts.portifolio.model.TipoProjeto;
 import dev.jpedrosnts.portifolio.repository.ProjetoRepository;

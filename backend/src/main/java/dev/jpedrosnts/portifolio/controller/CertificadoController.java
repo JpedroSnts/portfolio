@@ -1,6 +1,6 @@
 package dev.jpedrosnts.portifolio.controller;
 
-import dev.jpedrosnts.portifolio.dto.CadastrarCertificadoForm;
+import dev.jpedrosnts.portifolio.dto.form.CadastrarCertificadoForm;
 import dev.jpedrosnts.portifolio.model.Certificado;
 import dev.jpedrosnts.portifolio.model.Tecnologia;
 import dev.jpedrosnts.portifolio.repository.CertificadoRepository;

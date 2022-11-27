@@ -1,6 +1,6 @@
 package dev.jpedrosnts.portifolio.controller;
 
-import dev.jpedrosnts.portifolio.dto.AtualizarPerfilForm;
+import dev.jpedrosnts.portifolio.dto.form.AtualizarPerfilForm;
 import dev.jpedrosnts.portifolio.model.Usuario;
 import dev.jpedrosnts.portifolio.service.UsuarioService;
 import dev.jpedrosnts.portifolio.util.EnviarEmailUtil;
@@ -68,7 +68,7 @@ public class AdminController {
     @PostMapping("/perfil")
     public String atualizarPerfil(@Valid AtualizarPerfilForm form, BindingResult result, Principal principal, Model model) {
         model.addAttribute("email", principal.getName());
-        
+
         Usuario usuario = service.findByEmail(principal.getName());
         boolean senhaValida = new BCryptPasswordEncoder().matches(form.getSenha(), usuario.getSenha());
 

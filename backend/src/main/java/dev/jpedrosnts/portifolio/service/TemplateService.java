@@ -1,7 +1,7 @@
 package dev.jpedrosnts.portifolio.service;
 
-import dev.jpedrosnts.portifolio.dto.ContatoTemplateForm;
-import dev.jpedrosnts.portifolio.dto.SobreMimTemplateForm;
+import dev.jpedrosnts.portifolio.dto.form.ContatoTemplateForm;
+import dev.jpedrosnts.portifolio.dto.form.SobreMimTemplateForm;
 import dev.jpedrosnts.portifolio.model.ContatoTemplate;
 import dev.jpedrosnts.portifolio.model.SobreMimTemplate;
 import dev.jpedrosnts.portifolio.repository.ContatoTemplateRepository;

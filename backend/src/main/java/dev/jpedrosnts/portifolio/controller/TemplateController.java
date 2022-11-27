@@ -1,7 +1,7 @@
 package dev.jpedrosnts.portifolio.controller;
 
-import dev.jpedrosnts.portifolio.dto.ContatoTemplateForm;
-import dev.jpedrosnts.portifolio.dto.SobreMimTemplateForm;
+import dev.jpedrosnts.portifolio.dto.form.ContatoTemplateForm;
+import dev.jpedrosnts.portifolio.dto.form.SobreMimTemplateForm;
 import dev.jpedrosnts.portifolio.service.TemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
