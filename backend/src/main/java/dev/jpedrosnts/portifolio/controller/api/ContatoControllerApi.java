@@ -1,4 +1,4 @@
-package dev.jpedrosnts.portifolio.controller;
+package dev.jpedrosnts.portifolio.controller.api;
 
 import dev.jpedrosnts.portifolio.dto.form.EmailForm;
 import dev.jpedrosnts.portifolio.model.Contato;
@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/contato")
-public class ContatoController {
+@RequestMapping("/api/contato")
+public class ContatoControllerApi {
 
     private final ContatoRepository service;
     private final EnviarEmailUtil emailUtil;
     private final String emailAdmin;
 
     @Autowired
-    public ContatoController(ContatoRepository service, EnviarEmailUtil emailUtil, @Value("${email.admin}") String emailAdmin) {
+    public ContatoControllerApi(ContatoRepository service, EnviarEmailUtil emailUtil, @Value("${email.admin}") String emailAdmin) {
         this.service = service;
         this.emailUtil = emailUtil;
         this.emailAdmin = emailAdmin;
