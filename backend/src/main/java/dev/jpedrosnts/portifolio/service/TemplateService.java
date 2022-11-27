@@ -54,7 +54,7 @@ public class TemplateService {
 
         try {
             salvarContato(contato1, form.getNome1(), form.getLink1(), form.getIcone1());
-            salvarContato(contato2, form.getNome2(), form.getLink2(), form.getIcone1());
+            salvarContato(contato2, form.getNome2(), form.getLink2(), form.getIcone2());
             salvarContato(contato3, form.getNome3(), form.getLink3(), form.getIcone3());
             salvarContato(contato4, form.getNome4(), form.getLink4(), form.getIcone4());
         } catch (IOException ex) {
