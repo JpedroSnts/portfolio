@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:replace="partials/head :: head('Contato Template')"></head>
+<body>
+<header>
+    <nav th:replace="partials/navbar :: navbar"></nav>
+</header>
+<main class="container mt-4">
+    <form class="card mb-4" th:action="@{/template/contato}" method="post" th:object="${contatoTemplateForm}"
+          enctype="multipart/form-data">
+        <div class="card-header"><h2><a th:href="@{/template}" class="text-dark"><span class="bi bi-arrow-left"></span></a>
+            Contato</h2></div>
+        <div class="card-body">
+            <div class="card card-body mb-2">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="nome1">Nome: </label>
+                        <input type="text" class="form-control" id="nome1" name="nome1" placeholder="Nome"
+                               th:field="*{nome1}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{nome1}" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="link1">Link: </label>
+                        <input type="url" class="form-control" id="link1" name="link1"
+                               placeholder="Link de redirecionamento"
+                               th:field="*{link1}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{link1}" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="icone1">Icone: </label>
+                        <input type="file" class="form-control" id="icone1" name="icone1" placeholder="Nome"
+                               th:field="*{icone1}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{icone1}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-body mb-2">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="nome2">Nome: </label>
+                        <input type="text" class="form-control" id="nome2" name="nome2" placeholder="Nome"
+                               th:field="*{nome2}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{nome2}" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="link2">Link: </label>
+                        <input type="url" class="form-control" id="link2" name="link2"
+                               placeholder="Link de redirecionamento"
+                               th:field="*{link2}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{link2}" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="icone2">Icone: </label>
+                        <input type="file" class="form-control" id="icone2" name="icone2" placeholder="Nome"
+                               th:field="*{icone2}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{icone2}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-body mb-2">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="nome3">Nome: </label>
+                        <input type="text" class="form-control" id="nome3" name="nome3" placeholder="Nome"
+                               th:field="*{nome3}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{nome3}" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="link3">Link: </label>
+                        <input type="url" class="form-control" id="link3" name="link3"
+                               placeholder="Link de redirecionamento"
+                               th:field="*{link3}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{link3}" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="icone3">Icone: </label>
+                        <input type="file" class="form-control" id="icone3" name="icone3" placeholder="Nome"
+                               th:field="*{icone3}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{icone3}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-body mb-2">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="nome4">Nome: </label>
+                        <input type="text" class="form-control" id="nome4" name="nome4" placeholder="Nome"
+                               th:field="*{nome4}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{nome4}" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="link4">Link: </label>
+                        <input type="url" class="form-control" id="link4" name="link4"
+                               placeholder="Link de redirecionamento"
+                               th:field="*{link4}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{link4}" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="icone4">Icone: </label>
+                        <input type="file" class="form-control" id="icone4" name="icone4" placeholder="Nome"
+                               th:field="*{icone4}"
+                               th:errorclass="is-invalid">
+                        <div th:errors="*{icone4}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success">Atualizar</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>

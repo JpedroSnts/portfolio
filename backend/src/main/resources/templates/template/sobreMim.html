@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:replace="partials/head :: head('Sobre Mim Template')"></head>
+<body>
+<header>
+    <nav th:replace="partials/navbar :: navbar"></nav>
+</header>
+<main class="container mt-4">
+    <form class="card" th:action="@{/template/sobre-mim}" method="post" th:object="${sobreMimTemplateForm}"
+          enctype="multipart/form-data">
+        <div class="card-header"><h2><a th:href="@{/template}" class="text-dark"><span class="bi bi-arrow-left"></span></a>
+            Sobre Mim</h2></div>
+        <div class="card-body">
+            <label for="nome">Nome: </label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
+                   th:field="*{nome}"
+                   th:errorclass="is-invalid">
+            <div th:errors="*{nome}" class="invalid-feedback"></div>
+            <label for="sobrenome">Sobrenome: </label>
+            <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Nome"
+                   th:field="*{sobrenome}"
+                   th:errorclass="is-invalid">
+            <div th:errors="*{nome}" class="invalid-feedback"></div>
+            <label for="tecnologias">Tecnologias: </label>
+            <input type="text" class="form-control" id="tecnologias" name="tecnologias"
+                   placeholder="Tecnologias separadas por vírgula"
+                   th:field="*{tecnologias}"
+                   th:errorclass="is-invalid">
+            <div th:errors="*{tecnologias}" class="invalid-feedback"></div>
+            <label for="sobreMim">Sobre mim: </label>
+            <textarea class="form-control" id="sobreMim" name="texto"
+                      placeholder="Texto sobre mim" th:field="*{texto}"
+                      rows="4"
+                      th:errorclass="is-invalid"></textarea>
+            <div th:errors="*{texto}" class="invalid-feedback"></div>
+            <label for="imagem">Minha foto: </label>
+            <input type="file" class="form-control" id="imagem" name="imagem"
+                   placeholder="Imagem" th:field="*{imagem}"
+                   th:errorclass="is-invalid">
+            <div th:errors="*{imagem}" class="invalid-feedback"></div>
+            <button class="btn btn-success mt-2">Atualizar</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>
