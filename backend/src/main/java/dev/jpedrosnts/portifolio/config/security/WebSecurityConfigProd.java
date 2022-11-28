@@ -22,9 +22,10 @@ public class WebSecurityConfigProd extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.cors();
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/contato").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/contato").permitAll()
                 .antMatchers(HttpMethod.GET, "/admin/nova-senha").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/**").permitAll()
                 .anyRequest().authenticated()
