@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:replace="partials/head :: head('Emails')"></head>
+<body>
+<header>
+    <nav th:replace="partials/navbar :: navbar"></nav>
+</header>
+<main class="container mt-4">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Data</th>
+            <th scope="col">Mensagem</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="email: ${emails}">
+            <td th:text="${email.nome}">Nome</td>
+            <td th:text="${email.email}">Email</td>
+            <td th:text="${#temporals.format(email.data, 'dd/MM/yyyy - HH:mm')}">dd/MM/yyyy HH:mm</td>
+            <td>
+                <span class="text-decoration-underline link-primary" style="cursor: pointer" data-bs-toggle="modal"
+                      data-bs-target="#exampleModal">
+                    Visualizar
+                </span>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5">Mensagem do email</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" th:text="${email.mensagem}">Mensagem</div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

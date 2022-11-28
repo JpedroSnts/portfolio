@@ -2,6 +2,7 @@ package dev.jpedrosnts.portifolio.controller;
 
 import dev.jpedrosnts.portifolio.dto.form.AtualizarPerfilForm;
 import dev.jpedrosnts.portifolio.model.Usuario;
+import dev.jpedrosnts.portifolio.repository.ContatoRepository;
 import dev.jpedrosnts.portifolio.service.UsuarioService;
 import dev.jpedrosnts.portifolio.util.EnviarEmailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +27,18 @@ public class AdminController {
     private final UsuarioService service;
     private final EnviarEmailUtil enviarEmailUtil;
     private final String emailAdmin;
+    private final ContatoRepository contatoRepository;
 
     @Autowired
     public AdminController(
             UsuarioService service,
             EnviarEmailUtil enviarEmailUtil,
-            @Value("${email.admin}") String emailAdmin
-    ) {
+            @Value("${email.admin}") String emailAdmin,
+            ContatoRepository contatoRepository) {
         this.service = service;
         this.enviarEmailUtil = enviarEmailUtil;
         this.emailAdmin = emailAdmin;
+        this.contatoRepository = contatoRepository;
     }
 
     @GetMapping("/login")
@@ -63,6 +66,12 @@ public class AdminController {
         service.atualizarSenha(emailAdmin, novaSenha.toString());
         enviarEmailUtil.enviar("Nova senha", "Sua nova senha é: " + novaSenha, new String[]{emailAdmin});
         return "redirect:login";
+    }
+
+    @GetMapping("emails")
+    public String emails(Model model) {
+        model.addAttribute("emails", contatoRepository.findAll());
+        return "emails";
     }
 
     @PostMapping("/perfil")
