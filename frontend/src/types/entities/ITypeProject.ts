@@ -1,6 +1,6 @@
 interface ITypeProject {
 	id: string | number;
-	name: string;
+	nome: string;
 }
 
 export default ITypeProject;

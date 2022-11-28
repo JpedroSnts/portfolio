@@ -3,7 +3,7 @@ import ITechnology from "../../types/entities/ITechnology";
 import { api } from "../api";
 
 async function getTechnologies(): Promise<ITechnology[]> {
-	return (await api().get("/mock/tecnologias")).data;
+	return (await api().get("/tecnologia")).data;
 }
 
 async function getTechnology(id: string | number): Promise<ITechnology | undefined> {
@@ -11,11 +11,11 @@ async function getTechnology(id: string | number): Promise<ITechnology | undefin
 }
 
 async function getCertificados(): Promise<ICertificado[]> {
-	return (await api().get("/mock/certificados")).data;
+	return (await api().get("/certificado")).data;
 }
 
 async function getCertificadosByTechnology(id: string | undefined): Promise<ICertificado[]> {
-	return (await getCertificados()).filter(({ technology }) => id === technology.id);
+	return (await api().get("/certificado/tecnologia/" + id)).data;
 }
 
 export { getTechnologies, getCertificados, getTechnology, getCertificadosByTechnology };

@@ -1,7 +1,7 @@
 import s from "./style.module.css";
 
 interface IIconButtonProps {
-    icon: string;
+    icon?: string;
     text: string;
     link?: string;
     bgColor?: string;
@@ -17,7 +17,7 @@ function IconButton ({ icon, text, link, fontColor, bgColor }: IIconButtonProps)
     if (link) {
         return (
             <a href={link} target="_blank" className={s.IconButton} style={{ backgroundColor: defaultColor.bg }} title={text}>
-                <img src={icon} />
+                {icon && (<img src={icon} />)}
                 <span style={{ color: defaultColor.text }}>
                     {text}
                 </span>
@@ -26,7 +26,7 @@ function IconButton ({ icon, text, link, fontColor, bgColor }: IIconButtonProps)
     }
     return (
         <button className={s.IconButton} style={{ backgroundColor: defaultColor.bg }} title={text}>
-            <img src={icon} />
+            {icon && (<img src={icon} />)}
             <span style={{ color: defaultColor.text }}>
                 {text}
             </span>

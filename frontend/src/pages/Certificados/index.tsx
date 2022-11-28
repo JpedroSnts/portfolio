@@ -34,8 +34,8 @@ function Home () {
                 <Select placeholder="Categoria" options={options} selectRef={ref} onChange={onChange} />
             </section>
             <section className={s.Certificados}>
-                {certificados.map(({ id, link, icon, name }) => (
-                    <IconButton icon={icon} text={name} link={link} key={id} />
+                {certificados.map(({ id, certificado, nome, tecnologia: { icone } }) => (
+                    <IconButton icon={icone} text={nome} link={certificado} key={id} />
                 ))}
             </section>
         </div>

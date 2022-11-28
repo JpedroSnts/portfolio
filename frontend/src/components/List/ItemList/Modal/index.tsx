@@ -16,12 +16,12 @@ function Modal ({ item, visible, setVisible }: { item: IProject, visible: boolea
                 </div>
                 <div className={s.Modal}>
                     <article className={s.AreaModal}>
-                        <img src={item.image} alt={item.description} />
+                        <img src={item.imagem} alt={item.descricao} />
                         <section className={s.Description}>
-                            <h1>{item.name}</h1>
-                            <small>{item.type.name}</small>
+                            <h1>{item.nome}</h1>
+                            <small>{item.tipoProjeto.nome}</small>
                         </section>
-                        <p>{item.description}</p>
+                        <p>{item.descricao}</p>
                         <a href={item.link} target="_blank"><Button>Abrir</Button></a>
                     </article>
                 </div>

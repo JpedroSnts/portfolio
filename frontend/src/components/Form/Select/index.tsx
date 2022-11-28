@@ -16,8 +16,8 @@ const Select = ({ name, id, placeholder, options, onChange, selectRef }: SelectP
     return (
         <select defaultValue={"0"} name={name} id={id} className={s.Select} required onChange={onChange} ref={selectRef}>
             {placeholder && <option value={"0"}>{placeholder}</option>}
-            {options?.map(({ id, name }) => (
-                <option value={id} key={id}>{name}</option>
+            {options?.map(({ id, nome }) => (
+                <option value={id} key={id}>{nome}</option>
             ))}
         </select>
     )

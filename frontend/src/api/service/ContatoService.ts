@@ -3,11 +3,11 @@ import IFormContact from "../../types/entities/IFormContact";
 import { api } from "../api";
 
 async function getContactForms(): Promise<IContactForms[]> {
-	return (await api().get("/mock/contato")).data;
+	return (await api().get("/template/contato")).data;
 }
 
 async function sendEmail(form: IFormContact): Promise<any> {
-	await api().post("/mock/email", form);
+	console.log(await api().post("/contato", form));
 }
 
 export { getContactForms, sendEmail };

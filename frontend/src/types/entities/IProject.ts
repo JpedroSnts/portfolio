@@ -1,12 +1,10 @@
-import ITechnology from "./ITechnology";
 import ITypeProject from "./ITypeProject";
 
 export default interface IProject {
 	id: string | number;
-	name: string;
-	description: string;
+	nome: string;
+	descricao: string;
 	link: string;
-	image: string;
-	type: ITypeProject;
-	technologies: ITechnology[];
+	imagem: string;
+	tipoProjeto: ITypeProject;
 }

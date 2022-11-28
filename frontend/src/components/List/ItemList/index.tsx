@@ -11,11 +11,12 @@ function ItemList ({ item }: { item: IProject }) {
             <Modal item={item} visible={visible} setVisible={setVisible} />
             <div className={s.Link} onClick={() => setVisible(!visible)}>
                 <article className={s.ItemList}>
-                    <section className={s.Description}>
-                        <h1>{item.name}</h1>
-                        <small>{item.type.name}</small>
-                    </section>
-                    <img src={item.image} alt={item.description} className={s.Image} />
+                    <div className={s.Image} style={{ backgroundImage: `url('${item.imagem}')` }}>
+                        <section className={s.Description}>
+                            <h1>{item.nome}</h1>
+                            <small>{item.tipoProjeto.nome}</small>
+                        </section>
+                    </div>
                 </article>
             </div>
         </>
