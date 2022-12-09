@@ -29,7 +29,7 @@ public class ProjetoDto {
         id = projeto.getId();
         nome = projeto.getNome();
         descricao = projeto.getDescricao();
-        link = projeto.getDescricao();
+        link = projeto.getLink();
         imagem = projeto.getImagem();
         tipoProjeto = projeto.getTipoProjeto();
         tecnologias = projeto.getTecnologias();
