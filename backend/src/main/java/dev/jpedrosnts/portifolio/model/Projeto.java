@@ -26,7 +26,7 @@ public class Projeto {
     private UUID id;
     @Column(name = "nm_projeto")
     private String nome;
-    @Column(name = "ds_projeto")
+    @Column(name = "ds_projeto", columnDefinition = "TEXT")
     private String descricao;
     @Column(name = "nm_link_projeto")
     private String link;
