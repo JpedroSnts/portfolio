@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 import { getProps } from "../../api/service/HomeService";
 import ColorName from "../../components/ColorName";
+import Loader from "../../components/Loader";
 import SkillWriting from "../../components/SkillWriting";
 import useWindowSize from "../../hooks/useWindowSize";
-import IHomeProps from "../../types/props/IHomeProps";
 import s from "./style.module.css";
 
 function Home () {
@@ -11,6 +12,7 @@ function Home () {
     const [colorNameSize, setColorNameSize] = useState(defaultSize.colorName);
     const [skillWritingSize, setSkillWritingSize] = useState(defaultSize.skillWriting);
     const size = useWindowSize();
+    const { data, error } = useSWR("/template/home", () => getProps())
 
     useEffect(() => {
         if (size.width <= 440) {
@@ -22,14 +24,8 @@ function Home () {
         }
     }, [size]);
 
-    // DATA
-    const DEFAULT_DATA: IHomeProps = { name: ["", ""], skills: [""] };
-    const [data, setData] = useState<IHomeProps>(DEFAULT_DATA);
-    useEffect(() => {
-        (async () => {
-            setData(await getProps());
-        })();
-    }, []);
+    if (error) return <div className={s.Content}><h3 style={{ color: "#c20a1f" }}>Ocorreu um erro ao carregar os dados!</h3></div>
+    if (!data) return <div className={s.Content}><Loader /></div>
 
     return (
         <div className={s.Content}>

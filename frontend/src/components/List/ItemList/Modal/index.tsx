@@ -21,7 +21,9 @@ function Modal ({ item, visible, setVisible }: { item: IProject, visible: boolea
                             <h1>{item.nome}</h1>
                             <small>{item.tipoProjeto.nome}</small>
                         </section>
-                        <p>{item.descricao}</p>
+                        <div>
+                            <p>{item.descricao}</p>
+                        </div>
                         <a href={item.link} target="_blank"><Button>Abrir</Button></a>
                     </article>
                 </div>

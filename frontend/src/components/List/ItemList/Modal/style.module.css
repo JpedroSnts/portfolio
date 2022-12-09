@@ -45,6 +45,7 @@
 	border-radius: 10px;
 	padding: 15px;
 	overflow-y: auto;
+	overflow-x: auto;
 }
 
 .Modal::-webkit-scrollbar-track {
@@ -80,6 +81,8 @@
 
 .AreaModal {
 	text-align: left;
+	white-space: initial;
+	word-break: break-word;
 }
 
 .AreaModal img {

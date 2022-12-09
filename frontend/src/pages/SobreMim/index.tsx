@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 import { getProps } from "../../api/service/AboutService";
 import ColorName from "../../components/ColorName";
+import Loader from "../../components/Loader";
 import SkillWriting from "../../components/SkillWriting";
 import useWindowSize from "../../hooks/useWindowSize";
-import IAboutProps from "../../types/props/IAboutProps";
 import s from "./style.module.css";
 
 function Sobre () {
@@ -11,6 +12,7 @@ function Sobre () {
     const [colorNameSize, setColorNameSize] = useState(defaultSize.colorName);
     const [skillWritingSize, setSkillWritingSize] = useState(defaultSize.skillWriting);
     const size = useWindowSize();
+    const { data, error } = useSWR("/template/sobre-mim", () => getProps());
 
     useEffect(() => {
         if (size.width <= 570) {
@@ -22,14 +24,8 @@ function Sobre () {
         }
     }, [size]);
 
-    // DATA
-    const DEFAULT_DATA: IAboutProps = { name: ["", ""], skills: [""], image: "", text: "" };
-    const [data, setData] = useState<IAboutProps>(DEFAULT_DATA);
-    useEffect(() => {
-        (async () => {
-            setData(await getProps());
-        })();
-    }, []);
+    if (error) return <div className={s.Content}><h3 style={{ color: "#c20a1f" }}>Ocorreu um erro ao carregar os dados!</h3></div>
+    if (!data) return <div className={s.Content}><Loader /></div>
 
     return (
         <article className={s.Content}>

@@ -1,40 +1,19 @@
-import { useEffect, useRef, useState } from "react";
-import { getCertificados, getCertificadosByTechnology, getTechnologies } from "../../api/service/CertificadosService";
-import Select from "../../components/Form/Select";
+import useSWR from "swr";
+import { getCertificados } from "../../api/service/CertificadosService";
 import IconButton from "../../components/IconButton";
-import ICertificado from "../../types/entities/ICertificado";
-import ITechnology from "../../types/entities/ITechnology";
+import Loader from "../../components/Loader";
 import s from "./style.module.css";
 
 function Home () {
-    const [certificados, setCertificados] = useState<ICertificado[]>([]);
-    const [options, setOptions] = useState<ITechnology[]>([]);
-    const ref = useRef<HTMLSelectElement>(null);
+    const { data, error } = useSWR("/certificado", () => getCertificados());
 
-    async function onChange () {
-        const selectedValue = ref.current?.selectedOptions[0].value.toLowerCase();
-        if (selectedValue === "0") {
-            setCertificados(await getCertificados());
-            return;
-        }
-        const filterCertificados = await getCertificadosByTechnology(selectedValue);
-        setCertificados(filterCertificados);
-    }
-
-    useEffect(() => {
-        (async () => {
-            setCertificados(await getCertificados());
-            setOptions(await getTechnologies());
-        })();
-    }, []);
+    if (error) return <div className={s.Content}><h3 style={{ color: "#c20a1f" }}>Ocorreu um erro ao carregar os dados!</h3></div>
+    if (!data) return <div className={s.Content}><Loader /></div>
 
     return (
         <div className={s.Content}>
-            <section className={s.Select}>
-                <Select placeholder="Categoria" options={options} selectRef={ref} onChange={onChange} />
-            </section>
             <section className={s.Certificados}>
-                {certificados.map(({ id, certificado, nome, tecnologia: { icone } }) => (
+                {data.map(({ id, certificado, nome, tecnologia: { icone } }) => (
                     <IconButton icon={icone} text={nome} link={certificado} key={id} />
                 ))}
             </section>

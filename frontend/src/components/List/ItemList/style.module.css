@@ -25,6 +25,7 @@
 	background-size: cover;
 	display: flex;
 	align-items: flex-end;
+	border: #3e67e0 solid 1px;
 }
 
 .Description {

@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 import { getProjects } from "../../api/service/ProjectService";
 import List from "../../components/List";
-import IProject from "../../types/entities/IProject";
+import Loader from "../../components/Loader";
 import s from "./style.module.css";
 
 function Projetos () {
+    const { data, error } = useSWR("/projeto ", () => getProjects());
 
-    // DATA
-    const [data, setData] = useState<IProject[]>([]);
-    useEffect(() => {
-        (async () => {
-            setData(await getProjects());
-        })();
-    }, []);
+    if (error) return <div className={s.Content}><h3 style={{ color: "#c20a1f" }}>Ocorreu um erro ao carregar os dados!</h3></div>
+    if (!data) return <div className={s.Content}><Loader /></div>
 
     return (
         <div className={s.Content}>

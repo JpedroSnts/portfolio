@@ -1,23 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
+import useSWR from "swr";
 import { getContactForms, sendEmail } from "../../api/service/ContatoService";
 import Button from "../../components/Form/Button";
 import Input from "../../components/Form/Input";
 import IconButton from "../../components/IconButton";
-import IContactForms from "../../types/entities/IContactForms";
+import Loader from "../../components/Loader";
 import IFormContact from "../../types/entities/IFormContact";
 import s from "./style.module.css";
 
 function Contato () {
-    const [contactForms, setContactForms] = useState<IContactForms[]>([]);
     const INITIAL_STATE_FORM = { nome: "", email: "", mensagem: "" };
     const [form, setForm] = useState<IFormContact>(INITIAL_STATE_FORM);
-
-    useEffect(() => {
-        (async () => {
-            setContactForms(await getContactForms());
-        })()
-    }, []);
+    const { data, error } = useSWR("/template/contato", () => getContactForms());
 
     async function sendForm (e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -48,10 +43,13 @@ function Contato () {
         toast.success("E-mail enviado com sucesso!");
     }
 
+    if (error) return <div className={s.Content}><h3 style={{ color: "#c20a1f" }}>Ocorreu um erro ao carregar os dados!</h3></div>
+    if (!data) return <div className={s.Content}><Loader /></div>
+
     return (
         <div className={s.Content}>
             <section className={s.Buttons}>
-                {contactForms.map(({ icon, link, name }, i) => (
+                {data.map(({ icon, link, name }, i) => (
                     <IconButton
                         key={i}
                         icon={icon}
