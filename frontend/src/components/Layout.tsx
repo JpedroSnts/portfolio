@@ -1,16 +1,16 @@
-import { Outlet } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
+import { ReactElement } from 'react';
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import NavBar from "../components/NavBar";
+import NavBar from "./NavBar";
 
-function Layout () {
+function Layout ({ children }: { children: ReactElement | ReactElement[] }) {
     return (
         <>
             <header>
                 <NavBar />
             </header>
             <main>
-                <Outlet />
+                {children}
             </main>
             <ToastContainer
                 position="top-right"

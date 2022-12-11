@@ -1,5 +1,4 @@
 import { MouseEventHandler } from "react";
-import "./hamburgers.css";
 
 interface IHamburgerMenuProps {
     color: string;

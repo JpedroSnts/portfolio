@@ -31,6 +31,15 @@ strong {
 	color: #3e67e0;
 }
 
+a {
+	color: #3e67e0;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 .Line {
 	width: 100%;
 	margin: 10px 0;

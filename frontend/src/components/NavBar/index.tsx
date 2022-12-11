@@ -1,5 +1,6 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 import changeHtmlBackground from "../../util/change-html-background";
 import HamburgerMenu from "../HamburgerMenu";
 import s from "./style.module.css";
@@ -19,7 +20,7 @@ const pages: IPage[] = [
 function NavBar () {
     let itensMenu: JSX.Element[] = [];
 
-    const location = useLocation();
+    const location = useRouter();
     const [url, setUrl] = useState("/");
     const [isActive, setIsActive] = useState(false);
     const verifyUrl = (urlToVerify: String) => url === urlToVerify ? s.ActiveLink : s.None;
@@ -27,7 +28,7 @@ function NavBar () {
     pages.forEach((page, i) => (
         itensMenu.push(
             <li key={i}>
-                <Link to={String(page.url)} className={verifyUrl(page.url)} onClick={() => setIsActive(false)}>{page.title}</Link>
+                <Link href={String(page.url)} className={verifyUrl(page.url)} onClick={() => setIsActive(false)}>{page.title}</Link>
             </li>
         )
     ));
@@ -41,7 +42,7 @@ function NavBar () {
     return (
         <>
             <nav className={s.NavBar}>
-                <Link to="/" className={s.Logo}>JpedroSnts</Link>
+                <Link href="/" className={s.Logo}>JpedroSnts</Link>
                 <ul className={s.HorizontalMenu}>
                     {itensMenu}
                 </ul>
