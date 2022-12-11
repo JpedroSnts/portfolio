@@ -21,13 +21,15 @@
                     <a class="btn btn-primary" th:href="@{certificado/editar/} + ${certificado.id}">
                         <span class="bi bi-pencil-square"></span>
                     </a>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            th:data-bs-target="'#modal' + ${#strings.arraySplit(certificado.id,'-')[0]}">
                         <span class="bi bi-trash"></span>
                     </button>
                 </div>
             </div>
             <!--  MODAL  -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" th:id="'modal' + ${#strings.arraySplit(certificado.id,'-')[0]}" tabindex="-1"
+                 aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
