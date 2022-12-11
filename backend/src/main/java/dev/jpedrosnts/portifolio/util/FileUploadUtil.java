@@ -57,7 +57,7 @@ public class FileUploadUtil {
 
     public static boolean isImage(String fileName) {
         try {
-            return getContentType(fileName).startsWith("image/") && !getContentType(fileName).contains("gif");
+            return getContentType(fileName).startsWith("image/");
         } catch (Exception ex) {
             return false;
         }
